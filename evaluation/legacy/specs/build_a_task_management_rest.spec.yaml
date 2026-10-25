@@ -1,0 +1,73 @@
+task_id: build-task-management-rest-api
+summary: Build a production-ready task management REST API using FastAPI, SQLAlchemy,
+  Alembic, and JWT auth
+business_rules:
+- name: Task Isolation
+  formula: Users can only access and modify their own tasks
+- name: Authentication
+  formula: All task endpoints require a valid JWT Bearer token
+- name: Password Security
+  formula: Passwords must be securely hashed
+test_fixtures: []
+environment:
+  packages:
+  - fastapi
+  - uvicorn
+  - sqlalchemy
+  - alembic
+  - pydantic
+  - pytest
+  - httpx
+  env_vars:
+    DATABASE_URL: sqlite:///./tasks.db
+    SECRET_KEY: super-secret-key-12345
+    ALGORITHM: HS256
+  services: []
+global_verification:
+- pytest tests/
+local_goals:
+- id: L1
+  description: 'CREATE: Database setup in src/database.py'
+  type: create
+  blueprint: "from sqlalchemy import create_engine\nfrom sqlalchemy.orm import declarative_base,\
+    \ sessionmaker\n\nDATABASE_URL = \"sqlite:///./tasks.db\"\nengine = create_engine(DATABASE_URL,\
+    \ connect_args={\"check_same_thread\": False})\nSessionLocal = sessionmaker(autocommit=False,\
+    \ autoflush=False, bind=engine)\nBase = declarative_base()\n\ndef get_db():\n\
+    \    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()\n"
+  verification:
+    type: content
+    path: src/database.py
+    expect:
+      content_contains: SessionLocal
+- id: L2
+  description: 'CREATE: User and Task models in src/models.py'
+  type: create
+  blueprint: "from sqlalchemy import Column, Integer, String, DateTime, ForeignKey,\
+    \ Text\nfrom sqlalchemy.orm import relationship\nfrom datetime import datetime\n\
+    from src.database import Base\n\nclass User(Base):\n    __tablename__ = \"users\"\
+    \n    id = Column(Integer, primary_key=True, index=True)\n    email = Column(String,\
+    \ unique=True, index=True, nullable=False)\n    hashed_password = Column(String,\
+    \ nullable=False)\n    tasks = relationship(\"Task\", back_populates=\"owner\"\
+    )\n\nclass Task(Base):\n    __tablename__ = \"tasks\"\n    id = Column(Integer,\
+    \ primary_key=True, index=True)\n    title = Column(String, nullable=False)\n\
+    \    description = Column(Text, nullable=True)\n    status = Column(String, default=\"\
+    pending\", nullable=False)\n    priority = Column(String, default=\"medium\",\
+    \ nullable=False)\n    due_date = Column(DateTime, nullable=True)\n    user_id\
+    \ = Column(Integer, ForeignKey(\"users.id\"), nullable=False)\n    created_at\
+    \ = Column(DateTime, default=datetime.utcnow)\n    owner = relationship(\"User\"\
+    , back_populates=\"tasks\")\n"
+  verification:
+    type: content
+    path: src/models.py
+    expect:
+      content_contains: class Task
+context:
+  language: Python
+  framework: FastAPI
+  orm: SQLAlchemy
+  test_framework: pytest
+status: active
+approval:
+  approved_by: t <t@t.com>
+  approved_at: '2026-10-24T16:31:53.344229Z'
+  approved_commit: null

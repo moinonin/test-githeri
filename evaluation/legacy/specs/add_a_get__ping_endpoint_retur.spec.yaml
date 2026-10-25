@@ -1,0 +1,46 @@
+task_id: add-ping-endpoint
+summary: Add a GET /ping endpoint returning pong
+business_rules:
+- name: Health Check
+  formula: GET /ping returns a successful response indicating service availability
+test_fixtures: []
+environment:
+  packages:
+  - fastapi
+  - uvicorn
+  - pytest
+  - requests
+  env_vars: {}
+  services: []
+global_verification:
+- pytest tests/
+local_goals:
+- id: L1
+  description: 'CREATE: FastAPI app with GET /ping endpoint'
+  type: create
+  blueprint: "from fastapi import FastAPI\n\napp = FastAPI()\n\n@app.get(\"/ping\"\
+    )\nasync def ping():\n    return {\"status\": \"pong\"}\n"
+  verification:
+    type: content
+    path: src/main.py
+    expect:
+      content_contains: /ping
+- id: L2
+  description: 'VERIFY: GET /ping returns 200 and pong'
+  verification:
+    type: http
+    method: GET
+    url: http://localhost:8000/ping
+    expect:
+      status: 200
+      body_contains: pong
+context:
+  language: Python
+  framework: FastAPI
+  orm: None
+  test_framework: pytest
+status: active
+approval:
+  approved_by: t <t@t.com>
+  approved_at: '2026-10-24T16:54:27.428903Z'
+  approved_commit: null

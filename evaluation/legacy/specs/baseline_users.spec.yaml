@@ -1,0 +1,12 @@
+task_id: baseline-users
+summary: Baseline contract synthesized from app/routers/users.py
+status: draft
+generated: true
+generated_by: githeri spec --from-code
+endpoints:
+- method: GET
+  path: /
+  file: app/routers/users.py
+- method: GET
+  path: /{user_id}
+  file: app/routers/users.py

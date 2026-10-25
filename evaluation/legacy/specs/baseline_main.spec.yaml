@@ -1,0 +1,15 @@
+task_id: baseline-main
+summary: Baseline contract synthesized from benchmarks/run_2_cli/src/main.py
+status: draft
+generated: true
+generated_by: githeri spec --from-code
+endpoints:
+- method: POST
+  path: /login
+  file: benchmarks/run_2_cli/src/main.py
+- method: POST
+  path: /register
+  file: benchmarks/run_2_cli/src/main.py
+- method: POST
+  path: /token
+  file: benchmarks/run_2_cli/src/main.py

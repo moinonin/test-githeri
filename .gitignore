@@ -1,0 +1,10 @@
+.venv/
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+evaluation/runs/**/.githeri/
+evaluation/runs/**/src/
+evaluation/runs/**/app/
+evaluation/runs/**/tests/

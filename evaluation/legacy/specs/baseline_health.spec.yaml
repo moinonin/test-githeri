@@ -1,0 +1,12 @@
+task_id: baseline-health
+summary: Baseline contract synthesized from app/routers/health.py
+status: draft
+generated: true
+generated_by: githeri spec --from-code
+endpoints:
+- method: GET
+  path: /health
+  file: app/routers/health.py
+- method: GET
+  path: /ping
+  file: app/routers/health.py

@@ -1,0 +1,45 @@
+task_id: add-health-check-endpoint
+summary: Add GET /health endpoint returning status ok and service name
+business_rules:
+- name: Health Check Response
+  formula: GET /health must return HTTP 200 with status 'ok' and 'service' name
+test_fixtures: []
+environment:
+  packages:
+  - fastapi
+  - uvicorn
+  - pytest
+  - httpx
+  env_vars: {}
+  services: []
+global_verification:
+- pytest tests/
+local_goals:
+- id: L1
+  description: 'CREATE: FastAPI app with GET /health route'
+  type: create
+  blueprint: "from fastapi import FastAPI\n\napp = FastAPI(title=\"Core Service\"\
+    )\n\n@app.get(\"/health\")\nasync def get_health():\n    return {\n        \"\
+    status\": \"ok\",\n        \"service\": \"core-service\"\n    }\n"
+  verification:
+    type: content
+    path: src/main.py
+    expect:
+      content_contains: get_health
+- id: L2
+  description: 'VERIFY: GET /health returns status 200 and service metadata'
+  verification:
+    type: http
+    method: GET
+    url: http://localhost:8000/health
+    expect:
+      status: 200
+      body_contains: core-service
+context:
+  language: Python
+  framework: FastAPI
+  orm: None
+  test_framework: pytest
+feature_id: add_health_check_endpoint
+version: 1
+supersedes: null

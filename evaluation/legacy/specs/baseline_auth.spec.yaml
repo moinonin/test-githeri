@@ -1,0 +1,12 @@
+task_id: baseline-auth
+summary: Baseline contract synthesized from app/routers/auth.py
+status: draft
+generated: true
+generated_by: githeri spec --from-code
+endpoints:
+- method: POST
+  path: /auth/login
+  file: app/routers/auth.py
+- method: POST
+  path: /auth/register
+  file: app/routers/auth.py

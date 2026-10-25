@@ -1,0 +1,251 @@
+session_id: 0bc8aa02ca
+status: draft
+created_at: 1792938957.604734
+updated_at: 1792938957.6214552
+current_stage: START
+name: task-api
+project_path: /Users/nickrotich/Desktop/portfolio/projects/python/test-githeri
+answers:
+  PROB-STATEMENT: 'Build a small REST API for managing tasks: create, list, update,
+    delete tasks; each task has title, description, status, due_date. Needs persistence
+    and a health endpoint.'
+  CTX-PROJECT-KIND: new_project
+  GOAL-PRIMARY: 'Build a small REST API for managing tasks: create, list, update,
+    delete tasks; each task has title, description, status, due_date.'
+  REQ-CAPABILITIES: 'Build a small REST API for managing tasks: create, list, update,
+    delete tasks; each task has title, description, status, due_date.'
+  AC-GWT: 'Given the application is running with a clean database, When a valid request
+    is submitted to execute Build a small REST API for managing tasks: create, list,
+    upd, Then the system persists the record and returns HTTP 200 or 201 with the
+    expected data'
+canonical:
+  metadata:
+    archetype: rest_api
+  context:
+    project_path: /Users/nickrotich/Desktop/portfolio/projects/python/test-githeri
+    detected:
+      project_path: /Users/nickrotich/Desktop/portfolio/projects/python/test-githeri
+      exists: true
+      languages: []
+      frameworks: []
+      databases: []
+      has_tests: false
+      build_files: []
+    change_type: new_project
+  problem:
+    statement: 'Build a small REST API for managing tasks: create, list, update, delete
+      tasks; each task has title, description, status, due_date. Needs persistence
+      and a health endpoint.'
+    objective: 'Build a small REST API for managing tasks: create, list, update, delete
+      tasks; each task has title, description, status, due_date.'
+  actors:
+  - id: ACT-001
+    name: API Client
+    description: 'Actor identified in prompt: API Client'
+    permissions: []
+  goals:
+  - id: GOAL-001
+    description: 'Build a small REST API for managing tasks: create, list, update,
+      delete tasks; each task has title, description, status, due_date.'
+    priority: high
+  requirements:
+  - id: REQ-001
+    description: 'Build a small REST API for managing tasks: create, list, update,
+      delete tasks; each task has title, description, status, due_date.'
+    type: functional
+    priority: medium
+    source: explicit
+    rationale: Core action identified from prompt.
+  workflows: []
+  data: {}
+  interfaces: {}
+  constraints: []
+  dependencies:
+    internal: []
+    external: []
+  acceptance_criteria:
+  - id: AC-001
+    requirement_id: REQ-001
+    given:
+    - the application is running with a clean database
+    when:
+    - 'a valid request is submitted to execute Build a small REST API for managing
+      tasks: create, list, upd'
+    then:
+    - the system persists the record and returns HTTP 200 or 201 with the expected
+      data
+  verification:
+    tests:
+    - id: VER-001
+      description: Automated pytest integration tests covering happy paths and rejections
+      type: integration_test
+    static_checks: []
+    integration_checks: []
+    manual_checks: []
+  out_of_scope: []
+  assumptions:
+  - id: ASM-001
+    description: 'Applied conventional defaults for: standard_error_handling, integration_test_suite,
+      clean_startup_and_test_pass'
+    source: recommended_default
+    confidence: high
+    accepted: true
+  open_questions: []
+  confidence: {}
+  negative_cases:
+  - id: NEG-001
+    scenario: Malformed input, unauthenticated requests, unauthorized access, missing
+      resource
+    expected_behavior: Return standard HTTP 400/401/403/404/422 status codes with
+      documented error details
+    category: validation
+    source: recommended_default
+  completion_criteria:
+  - id: COMP-001
+    description: Application starts in clean environment, migrations execute, and
+      test suite passes
+    check_type: test_pass
+    source: recommended_default
+  coaching_findings:
+  - id: M2_OPERATIONS_WITHOUT_RULES
+    mistake_code: M2
+    title: State mutations described without business rules
+    dimension: rules
+    severity: important
+    ambiguity_tier: material_ambiguity
+    why_it_matters: Specifying operations like update, delete, or cancel without state
+      guards leaves business constraints undefined, leading to untested invalid state
+      transitions.
+    suggested_improvement: 'Define state preconditions: e.g. ''Customers can update
+      an order while in the pending state. Once shipped, the API must reject modification
+      requests.'''
+  - id: M4_MISSING_FAILURE_BEHAVIOR
+    mistake_code: M4
+    title: Negative cases and error handling omitted
+    dimension: exceptions
+    severity: important
+    ambiguity_tier: reasonable_default
+    why_it_matters: Specifying only happy-path behavior leaves validation, conflict
+      handling, and auth rejections untested. Production code must handle malformed
+      data and edge cases.
+    suggested_improvement: 'Identify key failure scenarios: ''Reject malformed inputs
+      (422), unauthenticated requests (401), foreign resource access (403), missing
+      resources (404), and duplicates (409).'''
+  - id: M6_TESTS_AS_AFTERTHOUGHT
+    mistake_code: M6
+    title: Verification and automated testing treated as an afterthought
+    dimension: confirmation
+    severity: important
+    ambiguity_tier: reasonable_default
+    why_it_matters: A specification without automated verification expectations cannot
+      be verified deterministically. Agents may produce plausible code that fails
+      under real execution.
+    suggested_improvement: 'Specify test expectations: ''Include automated integration
+      tests exercising the actual API routes and database persistence, covering both
+      authorized happy paths and unauthorized negative cases.'''
+  - id: M7_UNDEFINED_COMPLETION
+    mistake_code: M7
+    title: Completion criteria and definition of done undefined
+    dimension: completion
+    severity: important
+    ambiguity_tier: reasonable_default
+    why_it_matters: Without observable completion criteria, coding agents may declare
+      success after generating stub code or partial files rather than fully executing
+      tests in a clean environment.
+    suggested_improvement: 'Define observable completion conditions: ''The work is
+      complete when the application starts cleanly, database migrations execute, and
+      all automated pytest tests pass.'''
+  clear_spec_assessment:
+    context:
+      dimension: Context
+      present: true
+      status: sufficient
+      evidence: 'Build a small REST API for managing tasks: create, list, update,
+        delete tasks; each task has title, '
+    language_env:
+      dimension: Language and environment
+      present: false
+      status: default_proposed
+      evidence: Unspecified stack
+    end_users:
+      dimension: End users & permissions
+      present: true
+      status: sufficient
+      evidence: API Client
+    actions:
+      dimension: Actions & capabilities
+      present: true
+      status: material_ambiguity
+      evidence: 1 requirement(s) extracted
+    rules:
+      dimension: Rules & invariants
+      present: false
+      status: material_ambiguity
+      evidence: 0 rule(s) found
+    structure_data:
+      dimension: Structure and data
+      present: false
+      status: default_proposed
+      evidence: 0 entity model(s)
+    protection_quality:
+      dimension: Protection & quality
+      present: false
+      status: default_proposed
+      evidence: Default protection suggested
+    exceptions:
+      dimension: Exceptions & negative cases
+      present: false
+      status: default_proposed
+      evidence: 0 negative case(s)
+    confirmation:
+      dimension: Confirmation & tests
+      present: false
+      status: default_proposed
+      evidence: 0 test specification(s)
+    completion:
+      dimension: Completion criteria
+      present: false
+      status: default_proposed
+      evidence: 0 completion condition(s)
+  scores:
+    prompt_completeness: 0.35
+    specification_readiness: 0.725
+    implementation_conformance: null
+    archetype: rest_api
+    prompt_coverage:
+      context: 1.0
+      language_env: 0.0
+      end_users: 0.0
+      actions: 1.0
+      rules: 0.0
+      structure_data: 1.0
+      protection_quality: 0.0
+      exceptions: 0.0
+      confirmation: 0.0
+      completion: 0.0
+    readiness_areas:
+      context: 1.0
+      language_env: 0.5
+      end_users: 1.0
+      actions: 1.0
+      rules: 0.0
+      structure_data: 0.5
+      protection_quality: 0.5
+      exceptions: 1.0
+      confirmation: 1.0
+      completion: 1.0
+next_ids:
+  GOAL: 1
+  ACT: 1
+  REQ: 1
+  AC: 1
+  NEG: 1
+  VER: 1
+  COMP: 1
+  ASM: 1
+history: []
+version: 1
+mode: guided
+initial_prompt: 'Build a small REST API for managing tasks: create, list, update,
+  delete tasks; each task has title, description, status, due_date. Needs persistence
+  and a health endpoint.'

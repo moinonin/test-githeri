@@ -1,0 +1,21 @@
+task_id: baseline-tasks
+summary: Baseline contract synthesized from app/routers/tasks.py
+status: draft
+generated: true
+generated_by: githeri spec --from-code
+endpoints:
+- method: DELETE
+  path: /tasks/{task_id}
+  file: app/routers/tasks.py
+- method: GET
+  path: /tasks
+  file: app/routers/tasks.py
+- method: GET
+  path: /tasks/{task_id}
+  file: app/routers/tasks.py
+- method: POST
+  path: /tasks
+  file: app/routers/tasks.py
+- method: PUT
+  path: /tasks/{task_id}
+  file: app/routers/tasks.py

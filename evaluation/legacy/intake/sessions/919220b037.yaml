@@ -1,0 +1,42 @@
+session_id: 919220b037
+status: draft
+created_at: 1792862889.208577
+updated_at: 1792862893.063207
+current_stage: PROBLEM
+name: task-api-mcp
+project_path: /Users/nickrotich/Desktop/portfolio/projects/python/test-githeri
+answers:
+  CTX-PROJECT-KIND: new_project
+canonical:
+  metadata: {}
+  context:
+    change_type: new_project
+  problem:
+    statement: 'Build a production-ready task management REST API using Python, FastAPI,
+      PostgreSQL/SQLite, SQLAlchemy, and Alembic. Users register, log in, and manage
+      tasks. Strict user data isolation: users only access own tasks. Secure passwords
+      with bcrypt, JWT authentication. Clean project structure: business logic separate
+      from API routes. Full unit and integration tests.'
+  actors: []
+  goals: []
+  requirements: []
+  workflows: []
+  data: {}
+  interfaces: {}
+  constraints: []
+  dependencies:
+    internal: []
+    external: []
+  acceptance_criteria: []
+  verification:
+    tests: []
+    static_checks: []
+    integration_checks: []
+    manual_checks: []
+  out_of_scope: []
+  assumptions: []
+  open_questions: []
+  confidence: {}
+next_ids: {}
+history: []
+version: 1

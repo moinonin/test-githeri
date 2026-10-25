@@ -1,0 +1,6 @@
+mcp_servers:
+  githeri:
+    command: uvx
+    args:
+    - githeri@latest
+    - mcp

@@ -1,0 +1,45 @@
+task_id: add-health-endpoint
+summary: Add a GET /health endpoint returning status ok
+business_rules:
+- name: Health Check
+  formula: GET /health always returns 200 with JSON status ok
+test_fixtures: []
+environment:
+  packages:
+  - fastapi
+  - pytest
+  - httpx
+  env_vars: {}
+  services: []
+global_verification:
+- pytest tests/
+local_goals:
+- id: L1
+  description: 'CREATE: FastAPI health check route'
+  type: create
+  blueprint: "from fastapi import FastAPI\n\napp = FastAPI()\n\n@app.get(\"/health\"\
+    )\nasync def health_check():\n    return {\"status\": \"ok\"}\n"
+  verification:
+    type: content
+    path: src/main.py
+    expect:
+      content_contains: /health
+- id: L2
+  description: 'VERIFY: GET /health returns 200 and status ok'
+  verification:
+    type: http
+    method: GET
+    url: http://localhost:8000/health
+    expect:
+      status: 200
+      body_contains: ok
+context:
+  language: Python
+  framework: FastAPI
+  orm: None
+  test_framework: pytest
+status: active
+approval:
+  approved_by: t <t@t.com>
+  approved_at: '2026-10-24T16:54:16.116528Z'
+  approved_commit: null

@@ -1,0 +1,55 @@
+version: 1
+framework: fastapi
+entrypoint: app/main.py
+app_var: app
+routers:
+- file: app/routers/auth.py
+  module: app.routers.auth
+  vars:
+  - router
+- file: app/routers/tasks.py
+  module: app.routers.tasks
+  vars:
+  - router
+- file: app/routers/users.py
+  module: app.routers.users
+  vars:
+  - router
+- file: app/routers/health.py
+  module: app.routers.health
+  vars:
+  - router
+mounted_routers:
+- router: health.router
+  prefix: ''
+  tags: []
+  file: app/main.py
+- router: auth.router
+  prefix: ''
+  tags: []
+  file: app/main.py
+- router: tasks.router
+  prefix: ''
+  tags: []
+  file: app/main.py
+- router: users.router
+  prefix: /users
+  tags:
+  - users
+  file: app/main.py
+dependencies:
+  db_session: tests.conftest:override_get_db
+  auth_guard: app.routers.users:get_user
+models:
+  User: src.models:User
+  Task: src.models:Task
+  UserRegister: src.schemas:UserRegister
+  UserLogin: src.schemas:UserLogin
+  UserResponse: src.schemas:UserResponse
+  Token: src.schemas:Token
+  TaskBase: src.schemas:TaskBase
+  TaskUpdate: src.schemas:TaskUpdate
+  TaskResponse: src.schemas:TaskResponse
+  PaginatedTasksResponse: src.schemas:PaginatedTasksResponse
+test_framework: pytest
+test_command: pytest tests/
