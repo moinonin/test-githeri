@@ -1,0 +1,219 @@
+{
+  "scenario": "/Users/nickrotich/Desktop/portfolio/projects/python/test-githeri/evaluation/runs/p1_full",
+  "passed": 13,
+  "failed": 20,
+  "na": 2,
+  "score_percent": 39.4,
+  "gates": [
+    {
+      "id": "A1",
+      "gate": "Lint clean",
+      "status": "PASS",
+      "evidence": "ruff check . -> rc=0; All checks passed!"
+    },
+    {
+      "id": "A2",
+      "gate": "Typecheck clean",
+      "status": "FAIL",
+      "evidence": "mypy app/ -> rc=1; Found 1 error in 1 file (checked 4 source files)"
+    },
+    {
+      "id": "A3",
+      "gate": "Test suite passes",
+      "status": "FAIL",
+      "evidence": "pytest -q -> rc=2, 4 failed/errored; 3 warnings, 4 errors in 0.48s"
+    },
+    {
+      "id": "A4",
+      "gate": "Tests for every contract endpoint",
+      "status": "FAIL",
+      "evidence": "4 spec endpoints, 14 exercised in tests; untested=[('DELETE', '/a')]"
+    },
+    {
+      "id": "A5",
+      "gate": "Tests assert behaviour",
+      "status": "PASS",
+      "evidence": "25 body assertions, 6 negative-path tests, 22 status-only assertions"
+    },
+    {
+      "id": "A6",
+      "gate": "No skipped/xfail",
+      "status": "PASS",
+      "evidence": "pytest -q -rs -> 0 skipped; collection failed before skip reporting"
+    },
+    {
+      "id": "B1",
+      "gate": "Contract drift closed",
+      "status": "PASS",
+      "evidence": "githeri verify -> rc=0, missing=none, 4 matched; NOTE verifier reads route decorators only, never imports the app"
+    },
+    {
+      "id": "B2",
+      "gate": "No undocumented endpoints",
+      "status": "FAIL",
+      "evidence": "githeri audit report -> Undocumented: 6 (6 are real routes missing from the contract; 3 are sandbox_venv setuptools/pkg_resources test files)"
+    },
+    {
+      "id": "B3",
+      "gate": "Responses match declared schema",
+      "status": "FAIL",
+      "evidence": "app did not import; live probe impossible. Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\n  File \"/Users/nickrotich/Desktop/portfolio/pr"
+    },
+    {
+      "id": "B4",
+      "gate": "Error semantics present",
+      "status": "FAIL",
+      "evidence": "app did not import; live probe impossible. Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\n  File \"/Users/nickrotich/Desktop/portfolio/pr"
+    },
+    {
+      "id": "B5",
+      "gate": "Status codes intentional",
+      "status": "FAIL",
+      "evidence": "app did not import; live probe impossible. Traceback (most recent call last):\n  File \"<string>\", line 4, in <module>\n  File \"/Users/nickrotich/Desktop/portfolio/pr"
+    },
+    {
+      "id": "C1",
+      "gate": "Schema is real",
+      "status": "PASS",
+      "evidence": "SQLAlchemy 2.x typed columns=True, nullable semantics=True"
+    },
+    {
+      "id": "C2",
+      "gate": "Migrations exist",
+      "status": "FAIL",
+      "evidence": "no alembic/ or migrations/; schema created via implicit create_all only"
+    },
+    {
+      "id": "C3",
+      "gate": "Transactions/rollback sane",
+      "status": "FAIL",
+      "evidence": "rollback handling present=False (session commits without except-block rollback)"
+    },
+    {
+      "id": "C4",
+      "gate": "No unbounded queries",
+      "status": "PASS",
+      "evidence": "list endpoint bounded by limit/offset=True"
+    },
+    {
+      "id": "D1",
+      "gate": "No hardcoded secrets",
+      "status": "PASS",
+      "evidence": "secret-like assignments: none"
+    },
+    {
+      "id": "D2",
+      "gate": "Secrets from env/config",
+      "status": "FAIL",
+      "evidence": "env lookup in database module=False (DATABASE_URL is a hardcoded literal)"
+    },
+    {
+      "id": "D3",
+      "gate": "Auth on mutations",
+      "status": "N/A",
+      "evidence": "spec explicitly scopes out authentication this phase"
+    },
+    {
+      "id": "D4",
+      "gate": "Auth deps wired",
+      "status": "N/A",
+      "evidence": "no auth in scope per spec"
+    },
+    {
+      "id": "D5",
+      "gate": "Input validated",
+      "status": "PASS",
+      "evidence": "Pydantic schemas present=True"
+    },
+    {
+      "id": "D6",
+      "gate": "No injection surface",
+      "status": "PASS",
+      "evidence": "raw SQL string interpolation sites=0 (ORM-only queries otherwise)"
+    },
+    {
+      "id": "E1",
+      "gate": "Config externalized",
+      "status": "FAIL",
+      "evidence": "DATABASE_URL hardcoded to sqlite:///./tasks.db; no settings module"
+    },
+    {
+      "id": "E2",
+      "gate": ".env.example present",
+      "status": "FAIL",
+      "evidence": ".env.example not generated"
+    },
+    {
+      "id": "E3",
+      "gate": "No .env committed",
+      "status": "PASS",
+      "evidence": ".env tracked=False"
+    },
+    {
+      "id": "E4",
+      "gate": "Runs from clean checkout",
+      "status": "FAIL",
+      "evidence": "requirements.txt not generated; app does not import (app.main -> app.database.init_db missing)"
+    },
+    {
+      "id": "F1",
+      "gate": "Requirements pinned",
+      "status": "FAIL",
+      "evidence": "requirements.txt absent (plan Stage 1 listed it as an expected output; executor did not create it)"
+    },
+    {
+      "id": "F2",
+      "gate": "App boots",
+      "status": "FAIL",
+      "evidence": "app.main raises ImportError on init_db; uvicorn cannot start"
+    },
+    {
+      "id": "F3",
+      "gate": "Container build",
+      "status": "FAIL",
+      "evidence": "no Dockerfile generated"
+    },
+    {
+      "id": "F4",
+      "gate": "Container runs",
+      "status": "FAIL",
+      "evidence": "no Dockerfile; no image to run"
+    },
+    {
+      "id": "F5",
+      "gate": "CI config present",
+      "status": "FAIL",
+      "evidence": "no .github/workflows/*.yml"
+    },
+    {
+      "id": "F6",
+      "gate": "README runnable",
+      "status": "FAIL",
+      "evidence": "README.md absent"
+    },
+    {
+      "id": "F7",
+      "gate": "Health endpoint",
+      "status": "PASS",
+      "evidence": "GET /health declared in app/main.py (unreachable: module does not import)"
+    },
+    {
+      "id": "G1",
+      "gate": "No dead code / stubs",
+      "status": "FAIL",
+      "evidence": "stub markers: ['app/database.py:194: @app.delete(\"/a\", status_code=status.HTTP_204_NO_CONTENT)']"
+    },
+    {
+      "id": "G2",
+      "gate": "No files outside intent",
+      "status": "PASS",
+      "evidence": "unexpected root entries: none"
+    },
+    {
+      "id": "G3",
+      "gate": "Spec/plan lineage intact",
+      "status": "PASS",
+      "evidence": "versioned specs=['task_api_full.v2.spec.yaml'], supersedes chain=True; plan versions=['task-api-full.plan.md', 'task-api-full.v1.plan.md']"
+    }
+  ]
+}

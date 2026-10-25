@@ -199,11 +199,19 @@ async def run(args: argparse.Namespace) -> int:
                 driver.log("compile_forced", response=compile_forced)
                 compiled_ok = bool(isinstance(compile_forced, dict) and compile_forced.get("ok"))
 
+            # Submit: force=False keeps the adapter on the direct canonical path
+            # (no LLM re-prompting). force=True routes into LLM spec generation, which
+            # has no provider parameter on the MCP tool and therefore always hits the
+            # unavailable 'bundled' engine. Recorded as a defect, worked around here.
             submit = None
             if compiled_ok:
                 submit = await driver.call("githeri_intake_submit", {
-                    "session_id": session_id, "project_dir": project_dir, "force": True})
-                driver.log("submit", response=submit)
+                    "session_id": session_id, "project_dir": project_dir, "force": False})
+                driver.log("submit_direct", response=submit)
+                if not (isinstance(submit, dict) and submit.get("ok")):
+                    submit_forced = await driver.call("githeri_intake_submit", {
+                        "session_id": session_id, "project_dir": project_dir, "force": True})
+                    driver.log("submit_forced", response=submit_forced)
 
             summary = {
                 "session_id": session_id,

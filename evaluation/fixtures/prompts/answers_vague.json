@@ -1,0 +1,12 @@
+{
+  "PROB-MOTIVATION": "Support engineers currently track customer follow-ups in shared spreadsheets, which causes missed deadlines and no audit trail. This API replaces that with a queryable, persistent task list.",
+  "CTX-LANGUAGE-ENV": "Python 3.11, FastAPI, SQLAlchemy 2.x, SQLite for local runs, pytest for tests.",
+  "GOAL-SUCCESS-METRIC": "An engineer can create a task in under 10 seconds and retrieve the full task list with correct status filtering.",
+  "REQ-CAPABILITIES": "Create a task (POST /tasks), list tasks with optional status filter and pagination (GET /tasks), fetch one task (GET /tasks/{task_id}), update a task (PUT /tasks/{task_id}), delete a task (DELETE /tasks/{task_id}), and a liveness probe (GET /health).",
+  "AC-GWT": "Given a running application with a migrated database, when a client POSTs a valid task payload, then the task is persisted with a server-assigned id, status defaults to 'todo', and the API returns HTTP 201 with the created task body.",
+  "FAILURE-CASES": "Reject malformed payloads with 422, missing task ids with 404, duplicate task ids on create with 409, and invalid status values with 422.",
+  "VER-TEST-STRATEGY": "pytest integration tests using FastAPI TestClient against a temporary SQLite database, covering one happy path and one negative path per endpoint.",
+  "COMPLETION-GATE": "The work is complete when the application boots from a clean checkout, Alembic migrations apply to an empty database, and the full pytest suite passes with zero failures.",
+  "SCOPE-OUT": "No user accounts, no authentication, no JWT, no task assignment or notifications, no web UI, no pagination beyond a simple limit/offset.",
+  "ACT-ACTOR-PERMISSIONS": "Single internal API client role; all endpoints are unauthenticated in this phase."
+}

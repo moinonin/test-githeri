@@ -8,3 +8,5 @@ evaluation/runs/**/.githeri/
 evaluation/runs/**/src/
 evaluation/runs/**/app/
 evaluation/runs/**/tests/
+evaluation/runs/*/.git
+evaluation/runs/*/.git/**

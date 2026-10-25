@@ -1,0 +1,216 @@
+{
+  "session_id": "77548aa92e",
+  "questions_asked": 5,
+  "questions": [
+    {
+      "id": "PROB-MOTIVATION",
+      "stage": "PROBLEM",
+      "tier": "material_ambiguity",
+      "severity": "important",
+      "question": "Why is this needed? (What's the current pain or driver?)"
+    },
+    {
+      "id": "CON-GENERAL",
+      "stage": "CONSTRAINTS",
+      "tier": "material_ambiguity",
+      "severity": "important",
+      "question": "Any hard constraints? (tech stack, DB, compatibility, deadline, budget, ...)"
+    },
+    {
+      "id": "COMPLETION-GATE",
+      "stage": "DEPENDENT",
+      "tier": "reasonable_default",
+      "severity": "important",
+      "question": "What observable condition establishes that this task is complete?"
+    },
+    {
+      "id": "FAILURE-CASES",
+      "stage": "DEPENDENT",
+      "tier": "reasonable_default",
+      "severity": "important",
+      "question": "Which error conditions and negative cases should be tested?"
+    },
+    {
+      "id": "SCOPE-OUT",
+      "stage": "CONSTRAINTS",
+      "tier": "safe_detail",
+      "severity": "important",
+      "question": "What should explicitly NOT be part of this work? (out of scope)"
+    }
+  ],
+  "baseline": {
+    "readiness_score": 0.517,
+    "scores": {
+      "prompt_completeness": 0.35,
+      "specification_readiness": 0.725,
+      "implementation_conformance": null,
+      "archetype": "rest_api",
+      "prompt_coverage": {
+        "context": 1.0,
+        "language_env": 0.0,
+        "end_users": 0.0,
+        "actions": 1.0,
+        "rules": 0.0,
+        "structure_data": 1.0,
+        "protection_quality": 0.0,
+        "exceptions": 0.0,
+        "confirmation": 0.0,
+        "completion": 0.0
+      },
+      "readiness_areas": {
+        "context": 1.0,
+        "language_env": 0.5,
+        "end_users": 1.0,
+        "actions": 1.0,
+        "rules": 0.0,
+        "structure_data": 0.5,
+        "protection_quality": 0.5,
+        "exceptions": 1.0,
+        "confirmation": 1.0,
+        "completion": 1.0
+      }
+    },
+    "coaching_findings": [
+      {
+        "id": "M2_OPERATIONS_WITHOUT_RULES",
+        "mistake_code": "M2",
+        "title": "State mutations described without business rules",
+        "dimension": "rules",
+        "severity": "important",
+        "ambiguity_tier": "material_ambiguity",
+        "why_it_matters": "Specifying operations like update, delete, or cancel without state guards leaves business constraints undefined, leading to untested invalid state transitions.",
+        "suggested_improvement": "Define state preconditions: e.g. 'Customers can update an order while in the pending state. Once shipped, the API must reject modification requests.'"
+      },
+      {
+        "id": "M4_MISSING_FAILURE_BEHAVIOR",
+        "mistake_code": "M4",
+        "title": "Negative cases and error handling omitted",
+        "dimension": "exceptions",
+        "severity": "important",
+        "ambiguity_tier": "reasonable_default",
+        "why_it_matters": "Specifying only happy-path behavior leaves validation, conflict handling, and auth rejections untested. Production code must handle malformed data and edge cases.",
+        "suggested_improvement": "Identify key failure scenarios: 'Reject malformed inputs (422), unauthenticated requests (401), foreign resource access (403), missing resources (404), and duplicates (409).'"
+      },
+      {
+        "id": "M6_TESTS_AS_AFTERTHOUGHT",
+        "mistake_code": "M6",
+        "title": "Verification and automated testing treated as an afterthought",
+        "dimension": "confirmation",
+        "severity": "important",
+        "ambiguity_tier": "reasonable_default",
+        "why_it_matters": "A specification without automated verification expectations cannot be verified deterministically. Agents may produce plausible code that fails under real execution.",
+        "suggested_improvement": "Specify test expectations: 'Include automated integration tests exercising the actual API routes and database persistence, covering both authorized happy paths and unauthorized negative cases.'"
+      },
+      {
+        "id": "M7_UNDEFINED_COMPLETION",
+        "mistake_code": "M7",
+        "title": "Completion criteria and definition of done undefined",
+        "dimension": "completion",
+        "severity": "important",
+        "ambiguity_tier": "reasonable_default",
+        "why_it_matters": "Without observable completion criteria, coding agents may declare success after generating stub code or partial files rather than fully executing tests in a clean environment.",
+        "suggested_improvement": "Define observable completion conditions: 'The work is complete when the application starts cleanly, database migrations execute, and all automated pytest tests pass.'"
+      }
+    ],
+    "clear_spec_assessment": {
+      "context": {
+        "dimension": "Context",
+        "present": true,
+        "status": "sufficient",
+        "evidence": "Build a small REST API for managing tasks: create, list, update, delete tasks; each task has title, "
+      },
+      "language_env": {
+        "dimension": "Language and environment",
+        "present": false,
+        "status": "default_proposed",
+        "evidence": "Unspecified stack"
+      },
+      "end_users": {
+        "dimension": "End users & permissions",
+        "present": true,
+        "status": "sufficient",
+        "evidence": "API Client"
+      },
+      "actions": {
+        "dimension": "Actions & capabilities",
+        "present": true,
+        "status": "material_ambiguity",
+        "evidence": "1 requirement(s) extracted"
+      },
+      "rules": {
+        "dimension": "Rules & invariants",
+        "present": false,
+        "status": "material_ambiguity",
+        "evidence": "0 rule(s) found"
+      },
+      "structure_data": {
+        "dimension": "Structure and data",
+        "present": false,
+        "status": "default_proposed",
+        "evidence": "0 entity model(s)"
+      },
+      "protection_quality": {
+        "dimension": "Protection & quality",
+        "present": false,
+        "status": "default_proposed",
+        "evidence": "Default protection suggested"
+      },
+      "exceptions": {
+        "dimension": "Exceptions & negative cases",
+        "present": false,
+        "status": "default_proposed",
+        "evidence": "0 negative case(s)"
+      },
+      "confirmation": {
+        "dimension": "Confirmation & tests",
+        "present": false,
+        "status": "default_proposed",
+        "evidence": "0 test specification(s)"
+      },
+      "completion": {
+        "dimension": "Completion criteria",
+        "present": false,
+        "status": "default_proposed",
+        "evidence": "0 completion condition(s)"
+      }
+    }
+  },
+  "validate": {
+    "ok": false,
+    "session_id": "77548aa92e",
+    "readiness_score": 0.642,
+    "level1_findings": [],
+    "level2_findings": [
+      "ambiguous term 'small': ...Build a small REST API for managing tasks: create, li...",
+      "ambiguous term 'small': ...sistence and a health endpoint. Build a small REST API for managing tasks: create, li...",
+      "ambiguous term 'small': ...description, status, due_date. Build a small REST API for managing tasks: create, li..."
+    ],
+    "level3_blockers": [
+      "ambiguous term 'small': ...Build a small REST API for managing tasks: create, li...",
+      "ambiguous term 'small': ...sistence and a health endpoint. Build a small REST API for managing tasks: create, li...",
+      "ambiguous term 'small': ...description, status, due_date. Build a small REST API for managing tasks: create, li..."
+    ],
+    "spec_errors": []
+  },
+  "compile_unforced": {
+    "ok": false,
+    "error_type": "readiness_blocked",
+    "error": "Cannot compile with level-3 blockers unless force=True",
+    "blockers": [
+      "ambiguous term 'small': ...Build a small REST API for managing tasks: create, li...",
+      "ambiguous term 'small': ...sistence and a health endpoint. Build a small REST API for managing tasks: create, li...",
+      "ambiguous term 'small': ...description, status, due_date. Build a small REST API for managing tasks: create, li..."
+    ]
+  },
+  "compiled": true,
+  "submit": {
+    "ok": false,
+    "error_type": "readiness_blocked",
+    "error": "Cannot submit with level-3 blockers unless force=True",
+    "blockers": [
+      "ambiguous term 'small': ...Build a small REST API for managing tasks: create, li...",
+      "ambiguous term 'small': ...sistence and a health endpoint. Build a small REST API for managing tasks: create, li...",
+      "ambiguous term 'small': ...description, status, due_date. Build a small REST API for managing tasks: create, li..."
+    ]
+  }
+}

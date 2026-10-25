@@ -1,0 +1,45 @@
+PASS A1  Lint clean                             | ruff check . -> rc=0; All checks passed!
+FAIL A2  Typecheck clean                        | mypy app/ -> rc=1; Found 1 error in 1 file (checked 4 source files)
+FAIL A3  Test suite passes                      | pytest -q -> rc=2, 4 failed/errored; 3 warnings, 4 errors in 0.48s
+FAIL A4  Tests for every contract endpoint      | 4 spec endpoints, 14 exercised in tests; untested=[('DELETE', '/a')]
+PASS A5  Tests assert behaviour                 | 25 body assertions, 6 negative-path tests, 22 status-only assertions
+PASS A6  No skipped/xfail                       | pytest -q -rs -> 0 skipped; collection failed before skip reporting
+PASS B1  Contract drift closed                  | githeri verify -> rc=0, missing=none, 4 matched; NOTE verifier reads route decorators only, never imports the app
+FAIL B2  No undocumented endpoints              | githeri audit report -> Undocumented: 6 (6 are real routes missing from the contract; 3 are sandbox_venv setuptools/pkg_resources test files)
+FAIL B3  Responses match declared schema        | app did not import; live probe impossible. Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+  File "/Users/nickrotich/Desktop
+FAIL B4  Error semantics present                | app did not import; live probe impossible. Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+  File "/Users/nickrotich/Desktop
+FAIL B5  Status codes intentional               | app did not import; live probe impossible. Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+  File "/Users/nickrotich/Desktop
+PASS C1  Schema is real                         | SQLAlchemy 2.x typed columns=True, nullable semantics=True
+FAIL C2  Migrations exist                       | no alembic/ or migrations/; schema created via implicit create_all only
+FAIL C3  Transactions/rollback sane             | rollback handling present=False (session commits without except-block rollback)
+PASS C4  No unbounded queries                   | list endpoint bounded by limit/offset=True
+PASS D1  No hardcoded secrets                   | secret-like assignments: none
+FAIL D2  Secrets from env/config                | env lookup in database module=False (DATABASE_URL is a hardcoded literal)
+N/A  D3  Auth on mutations                      | spec explicitly scopes out authentication this phase
+N/A  D4  Auth deps wired                        | no auth in scope per spec
+PASS D5  Input validated                        | Pydantic schemas present=True
+PASS D6  No injection surface                   | raw SQL string interpolation sites=0 (ORM-only queries otherwise)
+FAIL E1  Config externalized                    | DATABASE_URL hardcoded to sqlite:///./tasks.db; no settings module
+FAIL E2  .env.example present                   | .env.example not generated
+PASS E3  No .env committed                      | .env tracked=False
+FAIL E4  Runs from clean checkout               | requirements.txt not generated; app does not import (app.main -> app.database.init_db missing)
+FAIL F1  Requirements pinned                    | requirements.txt absent (plan Stage 1 listed it as an expected output; executor did not create it)
+FAIL F2  App boots                              | app.main raises ImportError on init_db; uvicorn cannot start
+FAIL F3  Container build                        | no Dockerfile generated
+FAIL F4  Container runs                         | no Dockerfile; no image to run
+FAIL F5  CI config present                      | no .github/workflows/*.yml
+FAIL F6  README runnable                        | README.md absent
+PASS F7  Health endpoint                        | GET /health declared in app/main.py (unreachable: module does not import)
+FAIL G1  No dead code / stubs                   | stub markers: ['app/database.py:194: @app.delete("/a", status_code=status.HTTP_204_NO_CONTENT)']
+PASS G2  No files outside intent                | unexpected root entries: none
+PASS G3  Spec/plan lineage intact               | versioned specs=['task_api_full.v2.spec.yaml'], supersedes chain=True; plan versions=['task-api-full.plan.md', 'task-api-full.v1.plan.md']
+
+======================================================================
+PASS 13 / FAIL 20 / N/A 2   applicable score = 13/33 = 39.4%
+written: /Users/nickrotich/Desktop/portfolio/projects/python/test-githeri/evaluation/runs/p1_full/rubric_results.json
