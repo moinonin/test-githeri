@@ -95,6 +95,9 @@ When generating or modifying frontend code in full-stack projects:
 ## 🏗️ 5. Canonical Module Structure & Code Hygiene
 - **Framework Singleton**: In framework entrypoints (e.g., `main.py`), instantiate the application instance (`app = FastAPI(...)`) at module scope. Never hide it inside factory functions if route decorators are applied at module level.
 - **Declarative Database Models**: Always declare base models at module level (`Base = declarative_base()`). Never set `Base = None` or defer model base declaration.
+- **Authentication & Cryptographic Safety**:
+  - **NEVER use unmaintained `passlib`**. In Python 3.11+, `passlib.context.CryptContext` has known incompatibilities with modern `bcrypt >= 4.0`, throwing `ValueError: password cannot be longer than 72 bytes`.
+  - Always use native `bcrypt` (`bcrypt.hashpw(password.encode()[:72], bcrypt.gensalt()).decode()`) or standard library `hashlib` (`hashlib.sha256` with salt / `hmac.compare_digest`).
 - **Complete Imports**: Every type hint and framework symbol must be explicitly imported:
    - Python typing: `from typing import Optional, Final, AsyncGenerator, List, Dict, Tuple`
    - Framework primitives: `from fastapi import Depends, HTTPException, status, APIRouter`
