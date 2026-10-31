@@ -77,7 +77,7 @@ clean-all:
 update-githeri:
 	@echo -e "\033[1;34m📦 Reinstalling Githeri backend into testbed environment (editable)...\033[0m"
 	@if [ -d ../ai/githeri ]; then \
-		$(PYTHON) -m pip install --force-reinstall --no-deps -e ../ai/githeri/; \
+		$(PYTHON) -m pip install --force-reinstall --no-deps -e ../ai/githeri/"[MCP]"; \
 		echo -e "\033[1;32m✔ Githeri backend linked to latest changes.\033[0m"; \
 	else \
 		echo -e "\033[1;31m✖ Could not locate ../ai/githeri\033[0m"; \
