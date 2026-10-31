@@ -1,0 +1,94 @@
+task_id: support-followup-tasks-api
+summary: "Build FastAPI REST API for managing support-engineer follow-up tasks with SQLAlchemy 2.x and SQLite"
+business_rules:
+  - name: "Status default"
+    formula: "A newly created task always has status 'todo' regardless of client input"
+  - name: "Status transition"
+    formula: "A task may only transition between statuses todo, in_progress, and done"
+  - name: "Resource existence"
+    formula: "Updating or deleting a non-existent task must fail with HTTP 404"
+global_verification:
+  - "pytest tests/test_tasks.py"
+endpoints:
+  - method: "POST"
+    path: "/tasks"
+    description: "Create a new support follow-up task"
+    expected_status: 201
+  - method: "GET"
+    path: "/tasks"
+    description: "List tasks with optional status filter and pagination"
+    expected_status: 200
+  - method: "GET"
+    path: "/tasks/{task_id}"
+    description: "Fetch a single task by ID"
+    expected_status: 200
+  - method: "PUT"
+    path: "/tasks/{task_id}"
+    description: "Update an existing task"
+    expected_status: 200
+  - method: "DELETE"
+    path: "/tasks/{task_id}"
+    description: "Delete a task"
+    expected_status: 204
+  - method: "GET"
+    path: "/health"
+    description: "Check liveness and return service status"
+    expected_status: 200
+local_goals:
+  - id: L1
+    description: "INSPECT: Check directory structure and app module in app/main.py"
+    type: inspect
+    verification:
+      type: file_exists
+      path: "app/main.py"
+      expect:
+        exists: true
+  - id: L2
+    description: "CREATE: Implement FastAPI application, SQLAlchemy models, and CRUD endpoints in app/main.py"
+    type: create
+    blueprint: |
+      from fastapi import FastAPI, Depends, HTTPException, status, Query
+      from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, Session
+      from typing import Optional
+      from datetime import date, datetime
+
+      app = FastAPI(title="Support Follow-up Tasks API")
+
+      class Base(DeclarativeBase):
+          pass
+
+      class Task(Base):
+          __tablename__ = "tasks"
+          id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+          title: Mapped[str] = mapped_column(nullable=False)
+          description: Mapped[Optional[str]] = mapped_column(nullable=True)
+          status: Mapped[str] = mapped_column(default="todo", nullable=False)
+          due_date: Mapped[Optional[date]] = mapped_column(nullable=True)
+          created_at: Mapped[datetime] = mapped_column(default=datetime.utcnow, nullable=False)
+          updated_at: Mapped[datetime] = mapped_column(default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+
+      @app.get("/health")
+      def health_check():
+          return {"status": "ok", "service": "support-followup-tasks"}
+    acceptance_criteria:
+      - test: "FastAPI app instance is defined with health and task routes"
+        steps: "Verify app/main.py contains FastAPI setup and routes"
+    verification:
+      type: file_exists
+      path: "app/main.py"
+      expect:
+        exists: true
+        content_contains: "app = FastAPI"
+  - id: L3
+    description: "VERIFY: Run automated pytest test suite for tasks API"
+    type: verify
+    verification:
+      type: cli
+      command: "pytest tests/test_tasks.py"
+      expect:
+        exit_code: 0
+context:
+  language: Python
+  framework: FastAPI
+  orm: SQLAlchemy 2.x
+  test_framework: pytest

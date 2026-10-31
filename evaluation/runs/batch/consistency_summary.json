@@ -1,0 +1,54 @@
+[
+  {
+    "case": "case_01",
+    "error": "data must be str, not NoneType"
+  },
+  {
+    "case": "case_02",
+    "spec_validated": true,
+    "spec_attempt": 1,
+    "endpoints": 6,
+    "verify_status": "fail",
+    "score": 0.8,
+    "layers": {
+      "spec_validation": "pass",
+      "plan_structure": "pass",
+      "command_syntax_and_safety": "pass",
+      "path_integrity": "pass",
+      "embedded_python_static": "fail"
+    },
+    "plan_bytes": 5615
+  },
+  {
+    "case": "case_03",
+    "error": "data must be str, not NoneType"
+  },
+  {
+    "case": "case_04",
+    "error": "data must be str, not NoneType"
+  },
+  {
+    "case": "case_05",
+    "error": "expected string or bytes-like object, got 'NoneType'"
+  },
+  {
+    "case": "case_06",
+    "error": "data must be str, not NoneType"
+  },
+  {
+    "case": "case_07",
+    "error": "data must be str, not NoneType"
+  },
+  {
+    "case": "case_08",
+    "error": "data must be str, not NoneType"
+  },
+  {
+    "case": "case_09",
+    "error": "data must be str, not NoneType"
+  },
+  {
+    "case": "case_10",
+    "error": "data must be str, not NoneType"
+  }
+]

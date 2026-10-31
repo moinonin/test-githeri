@@ -1,0 +1,249 @@
+{
+  "baseline_avg": 0.5,
+  "candidate_avg": 0.625,
+  "kept": true,
+  "baseline": [
+    {
+      "case": "case_01",
+      "score": 0.4,
+      "custom_score": 0.5,
+      "layers": {
+        "spec_validation": "pass",
+        "plan_structure": "pass",
+        "command_syntax_and_safety": "unknown",
+        "path_integrity": "fail",
+        "embedded_python_static": "fail"
+      }
+    },
+    {
+      "case": "case_02",
+      "score": 0.4,
+      "custom_score": 0.5,
+      "layers": {
+        "spec_validation": "pass",
+        "plan_structure": "pass",
+        "command_syntax_and_safety": "unknown",
+        "path_integrity": "fail",
+        "embedded_python_static": "fail"
+      }
+    },
+    {
+      "case": "case_03",
+      "score": 0.6,
+      "custom_score": 0.75,
+      "layers": {
+        "spec_validation": "pass",
+        "plan_structure": "pass",
+        "command_syntax_and_safety": "unknown",
+        "path_integrity": "pass",
+        "embedded_python_static": "fail"
+      }
+    },
+    {
+      "case": "case_04",
+      "score": 0.4,
+      "custom_score": 0.5,
+      "layers": {
+        "spec_validation": "pass",
+        "plan_structure": "pass",
+        "command_syntax_and_safety": "unknown",
+        "path_integrity": "fail",
+        "embedded_python_static": "fail"
+      }
+    },
+    {
+      "case": "case_05",
+      "score": 0.2,
+      "custom_score": 0.25,
+      "layers": {
+        "spec_validation": "fail",
+        "plan_structure": "pass",
+        "command_syntax_and_safety": "unknown",
+        "path_integrity": "fail",
+        "embedded_python_static": "fail"
+      }
+    },
+    {
+      "case": "case_06",
+      "score": 0.6,
+      "custom_score": 0.75,
+      "layers": {
+        "spec_validation": "pass",
+        "plan_structure": "pass",
+        "command_syntax_and_safety": "unknown",
+        "path_integrity": "pass",
+        "embedded_python_static": "fail"
+      }
+    },
+    {
+      "case": "case_07",
+      "score": 0.4,
+      "custom_score": 0.5,
+      "layers": {
+        "spec_validation": "pass",
+        "plan_structure": "pass",
+        "command_syntax_and_safety": "unknown",
+        "path_integrity": "fail",
+        "embedded_python_static": "fail"
+      }
+    },
+    {
+      "case": "case_08",
+      "score": 0.4,
+      "custom_score": 0.5,
+      "layers": {
+        "spec_validation": "pass",
+        "plan_structure": "pass",
+        "command_syntax_and_safety": "unknown",
+        "path_integrity": "fail",
+        "embedded_python_static": "fail"
+      }
+    },
+    {
+      "case": "case_09",
+      "score": 0.4,
+      "custom_score": 0.5,
+      "layers": {
+        "spec_validation": "fail",
+        "plan_structure": "pass",
+        "command_syntax_and_safety": "unknown",
+        "path_integrity": "pass",
+        "embedded_python_static": "fail"
+      }
+    },
+    {
+      "case": "case_10",
+      "score": 0.2,
+      "custom_score": 0.25,
+      "layers": {
+        "spec_validation": "fail",
+        "plan_structure": "pass",
+        "command_syntax_and_safety": "unknown",
+        "path_integrity": "fail",
+        "embedded_python_static": "fail"
+      }
+    }
+  ],
+  "candidate": [
+    {
+      "case": "case_01",
+      "score": 0.6,
+      "custom_score": 0.75,
+      "layers": {
+        "spec_validation": "pass",
+        "plan_structure": "pass",
+        "command_syntax_and_safety": "unknown",
+        "path_integrity": "pass",
+        "embedded_python_static": "fail"
+      }
+    },
+    {
+      "case": "case_02",
+      "score": 0.4,
+      "custom_score": 0.5,
+      "layers": {
+        "spec_validation": "pass",
+        "plan_structure": "pass",
+        "command_syntax_and_safety": "unknown",
+        "path_integrity": "fail",
+        "embedded_python_static": "fail"
+      }
+    },
+    {
+      "case": "case_03",
+      "score": 0.6,
+      "custom_score": 0.75,
+      "layers": {
+        "spec_validation": "pass",
+        "plan_structure": "pass",
+        "command_syntax_and_safety": "pass",
+        "path_integrity": "fail",
+        "embedded_python_static": "fail"
+      }
+    },
+    {
+      "case": "case_04",
+      "score": 0.4,
+      "custom_score": 0.5,
+      "layers": {
+        "spec_validation": "fail",
+        "plan_structure": "pass",
+        "command_syntax_and_safety": "unknown",
+        "path_integrity": "pass",
+        "embedded_python_static": "fail"
+      }
+    },
+    {
+      "case": "case_05",
+      "score": 0.6,
+      "custom_score": 0.75,
+      "layers": {
+        "spec_validation": "pass",
+        "plan_structure": "pass",
+        "command_syntax_and_safety": "unknown",
+        "path_integrity": "pass",
+        "embedded_python_static": "fail"
+      }
+    },
+    {
+      "case": "case_06",
+      "score": 0.6,
+      "custom_score": 0.75,
+      "layers": {
+        "spec_validation": "pass",
+        "plan_structure": "pass",
+        "command_syntax_and_safety": "unknown",
+        "path_integrity": "pass",
+        "embedded_python_static": "fail"
+      }
+    },
+    {
+      "case": "case_07",
+      "score": 0.4,
+      "custom_score": 0.5,
+      "layers": {
+        "spec_validation": "pass",
+        "plan_structure": "pass",
+        "command_syntax_and_safety": "unknown",
+        "path_integrity": "fail",
+        "embedded_python_static": "fail"
+      }
+    },
+    {
+      "case": "case_08",
+      "score": 0.6,
+      "custom_score": 0.75,
+      "layers": {
+        "spec_validation": "pass",
+        "plan_structure": "pass",
+        "command_syntax_and_safety": "unknown",
+        "path_integrity": "pass",
+        "embedded_python_static": "fail"
+      }
+    },
+    {
+      "case": "case_09",
+      "score": 0.6,
+      "custom_score": 0.75,
+      "layers": {
+        "spec_validation": "pass",
+        "plan_structure": "pass",
+        "command_syntax_and_safety": "unknown",
+        "path_integrity": "pass",
+        "embedded_python_static": "fail"
+      }
+    },
+    {
+      "case": "case_10",
+      "score": 0.2,
+      "custom_score": 0.25,
+      "layers": {
+        "spec_validation": "fail",
+        "plan_structure": "pass",
+        "command_syntax_and_safety": "unknown",
+        "path_integrity": "fail",
+        "embedded_python_static": "fail"
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "githeri": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "githeri[mcp]>=1.0.0",
+        "githeri",
+        "mcp"
+      ]
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "githeri-mcp",
+  "description": "Githeri contract engine exposed as native MCP tools",
+  "command": "githeri-mcp",
+  "env": {}
+}
