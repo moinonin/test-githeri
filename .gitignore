@@ -1,12 +1,44 @@
+# Virtual environments
 .venv/
+*/.venv/
+venv/
+ENV/
+
+# Secrets & Environment variables
 .env
+*/.env
+*.env.local
+
+# Node / Frontend builds
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+.vite/
+**/.vite/
+
+# Python caches
 __pycache__/
+**/__pycache__/
 *.pyc
+*.pyo
+*.pyd
 .pytest_cache/
+**/.pytest_cache/
 .ruff_cache/
+**/.ruff_cache/
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+**/subscriptions.db
+
+# Evaluation temp runs
 evaluation/runs/**/.githeri/
 evaluation/runs/**/src/
 evaluation/runs/**/app/
 evaluation/runs/**/tests/
 evaluation/runs/*/.git
 evaluation/runs/*/.git/**
+.cache/
