@@ -42,3 +42,9 @@ evaluation/runs/**/tests/
 evaluation/runs/*/.git
 evaluation/runs/*/.git/**
 .cache/
+
+# Archives & Worker runs
+archives/
+runs/
+**/runs/
+

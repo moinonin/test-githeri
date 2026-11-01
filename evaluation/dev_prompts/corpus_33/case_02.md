@@ -1,0 +1,3 @@
+# Fix my code
+
+My application isn't working properly. I have a Python backend with FastAPI and React frontend and PostgreSQL database and users are sometimes getting logged out and sometimes the API returns errors and occasionally the page just freezes. It was working before I added some authentication changes yesterday. Can you look at my code and fix everything? Please don't rewrite the application because I have already spent a lot of time on it. Make sure you don't break anything else and make it production ready. I don't know where the problem is so just check everything and find it. Also there are some Docker issues but I think those are probably unrelated. Just give me the fixed code.

@@ -1,0 +1,3 @@
+# Excel vacation tool → web app, 10K employees
+
+My company wants an internal tool to manage employee vacation requests. I started building it in Excel with macros but it's getting messy. Can you convert it to a web app? It should have a form where employees enter their name, department, and dates. Then the manager gets an email and can approve or reject. The data should be stored somewhere secure, like that cloud thing. I don't know what a database is but I heard SQL is good. Please use SQL. Also we have 10,000 employees and sometimes multiple people request the same week off, so the app should automatically detect conflicts. And it needs a report that shows who has taken the most vacation days. I'll send you the Excel file, but it's 50MB because it has pictures in it.

@@ -1,0 +1,3 @@
+# Facebook for dog owners
+
+I want to build a social media platform like Facebook but only for dog owners, and it should have real-time chat, video calls, a marketplace, event scheduling, and a recommendation engine that suggests dog parks based on weather and user reviews. I don't have any code yet, but I have a logo and a domain name. Please generate the entire backend and frontend, use any technology you think is best, and make sure it can handle 10 million users on day one. Also I need it to be completely free to run, use no third-party services, and work offline. Don't ask me any questions, just start coding and give me the whole project as a zip file.

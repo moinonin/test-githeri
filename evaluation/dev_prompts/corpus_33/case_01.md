@@ -1,0 +1,3 @@
+# Build me an app
+
+I want you to build me a website for my business. It should look modern and professional and be better than the websites of my competitors. I need a homepage, login, dashboard, payments, notifications, admin panel and maybe some AI features. Use whatever technologies you think are best because I don't really know much about coding. Make it secure and scalable and make sure everything works properly. I want the frontend and backend and database all done. Please just build the whole thing and don't ask me too many questions because I want to get started quickly. Also make it mobile friendly and make the design really nice.

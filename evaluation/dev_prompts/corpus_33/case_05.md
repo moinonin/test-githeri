@@ -1,0 +1,3 @@
+# Fix my code on steroids
+
+My code isn't working. I wrote this function and it gives an error sometimes but other times it works, I don't know why. Here's the whole file (pastes 800 lines of mixed frontend and backend code with no comments). I need you to fix the bug but also while you're at it can you make the whole thing faster and add a feature where users can upload photos and the app automatically tags them using AI, and also the database is slow so maybe switch it to something else, and can you rewrite the whole thing in React because I heard that's better, but keep all my existing logic exactly the same, and the deadline is tomorrow morning so please hurry.

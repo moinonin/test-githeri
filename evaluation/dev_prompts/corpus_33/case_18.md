@@ -1,0 +1,3 @@
+# Open-world RPG game in Unity + VR
+
+I want to create a video game. It's going to be an open-world RPG with dragons, magic, and crafting. The player can explore a map the size of Skyrim, talk to hundreds of NPCs, fight enemies in real-time, and build their own house. I have no programming experience but I drew some concept art in MS Paint. Please generate the entire game in Unity using C#. Also make it multiplayer so my friends can join, and support VR headsets. The graphics should look like a AAA title but run on a laptop with integrated graphics. I need a playable demo in two weeks for a school project. Don't give me tutorials, just the full project files.

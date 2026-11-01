@@ -1,0 +1,3 @@
+# Amazon scraper fix + scale + dashboard
+
+I downloaded a Python script from GitHub that scrapes Amazon prices. It stopped working last week. I think Amazon changed their HTML. Please fix the scraper so it works again. Also I want to scale it to scrape 1 million products per hour and store the data in a database. I don't know which database to use—maybe MongoDB or MySQL or that Firebase thing. Can you pick one and set it all up for me? Also I need a dashboard that shows price history charts and alerts me when a price drops. The original script is 200 lines and has no comments. I'll paste it below. (Pastes code with syntax errors because of copy-paste issues.)

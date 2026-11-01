@@ -1,0 +1,3 @@
+# Chatbot from scratch, no libraries, FB Messenger
+
+I'm trying to build a chatbot for my e-commerce site. I saw a tutorial that used something called Rasa or Dialogflow, but I want to build my own from scratch to learn. The chatbot should answer questions about shipping, returns, and product recommendations. It should also process natural language and understand typos. I have a list of 10 example questions and answers. Can you write the entire chatbot in Python without using any libraries? It needs to run in a web browser and also integrate with Facebook Messenger. Also make it learn from conversations over time, but don't use any machine learning because I don't understand it.

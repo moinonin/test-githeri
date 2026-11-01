@@ -1,0 +1,3 @@
+# Stacked context (copy-paste hell)
+
+Here's my existing code: [pastes 2000 lines from 5 different files with no structure]. I also have this database schema: [pastes SQL dump]. And this is the API spec I want: [pastes OpenAPI spec]. And here's the error I'm getting: [pastes stack trace]. And this is what I want to build next: add a real-time dashboard showing all the metrics from the API, with charts and alerts, and also add a CLI tool for admins, and also make the API faster by adding caching, and also the frontend is ugly so redesign it. Also I want to use this new framework I just heard about. And it should be production ready. And secure. And I need it by Friday.

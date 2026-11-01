@@ -1,0 +1,3 @@
+# Stock prediction ML from 100 rows
+
+I need a machine learning model that can predict stock prices. I have a CSV file with 100 rows of historical data for one stock. The model should be 99% accurate and make me rich. Please write the Python code using TensorFlow and also deploy it as a web app where users can type any stock symbol and get a prediction. I don't want to do any data cleaning or feature engineering, just feed the CSV directly. Also make it work in real time and update every second. And don't ask me what kind of prediction I want—just the price for tomorrow. If you can't do it, you're not a good AI.

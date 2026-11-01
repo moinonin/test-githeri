@@ -1,0 +1,3 @@
+# Church app: Java→Swift→web, no backend
+
+I'm building a mobile app for my church. It needs to show the weekly bulletin, allow online donations via PayPal and Stripe, stream live sermons, have a prayer request wall where people can post anonymously, and sync with Google Calendar for events. I already have some code from a friend but it's in Java for Android and I want it on iPhone too, so please convert it to Swift and also make it work on the web. Also the church has no budget for servers, so it has to run entirely on the phones without a backend. Can you write all the code and give me step-by-step instructions on how to submit to both app stores? I need it by Sunday.

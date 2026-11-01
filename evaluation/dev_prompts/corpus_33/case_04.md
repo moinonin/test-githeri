@@ -1,0 +1,3 @@
+# Business app do-everything
+
+I need an app that can do everything for my business like manage inventory, handle customer messages, process payments, and also maybe let employees log in and see their schedules, and it should be able to work on phones and computers, oh and it needs to look really modern like those apps with dark mode and animations, also can you make it so I can add new features later without breaking anything, and I don't know what language to use but I heard Python is good, so use that, and also make it secure because I don't want hackers, and it should be done by next week because I promised a client, please just write all the code and explain it to me like I'm five.

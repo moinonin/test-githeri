@@ -1,0 +1,3 @@
+# WordPress white screen + redesign
+
+My website is slow. I think it's because of the database but I'm not sure. It's a WordPress site with like 50 plugins and I don't know which ones are active. I tried to run some command I found on Stack Overflow that deleted a table, now the site shows a white screen. Can you fix the white screen and also make the site load in under 1 second on a 2G connection? While you're at it, can you redesign the homepage to have a video background, a chatbot, and a pop-up newsletter signup that appears after 3 seconds? Also my client wants a blog but only if it doesn't slow anything down. Please don't tell me to remove plugins because I need them all.

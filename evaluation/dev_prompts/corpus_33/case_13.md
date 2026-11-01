@@ -1,0 +1,3 @@
+# Uber for pet grooming (find-and-replace template)
+
+I want to make an app exactly like Uber but for pet grooming. It should let users book a groomer, track them on a map in real time, pay inside the app, rate the groomer, and also have a subscription tier where users get monthly discounts. I don't have any code yet, but I found a free template online for a taxi app. Can you just change the word 'taxi' to 'groomer' and 'rider' to 'pet owner' and then add a button for uploading pet photos? Also make it so the groomer can see a calendar of appointments but only on weekends. And the whole thing needs to work in both English and Spanish, and please don't use any paid APIs because I'm broke.

@@ -1,0 +1,3 @@
+# Follow this tutorial but change everything
+
+I followed this tutorial [links to a 3rd-party tutorial] to build a REST API with FastAPI and SQLAlchemy, but I want to change it to use GraphQL instead, and also use MongoDB instead of PostgreSQL, and also make it microservice-based with Redis queuing, and also add JWT auth with refresh tokens, and also Dockerize everything with Kubernetes, and also add a React frontend. But keep the same data model from the tutorial. And use the same folder structure. And don't use any of the tutorial's code directly because of licensing. And I need it done in 2 days.
